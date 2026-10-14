@@ -1,0 +1,10 @@
+Snippet de código
+
+bin/
+.settings/
+.classpath
+.project
+
+*.db
+*.mv.db
+*.trace.db
