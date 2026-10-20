@@ -1,40 +1,56 @@
-# Sistema de Cadastro de Produtos
+Sistema de Cadastro de Produtos (API REST)
 
-Este é um sistema de gerenciamento de produtos desenvolvido em **Java Puro**, rodando diretamente via console (terminal) e integrado ao banco de dados relacional **H2 Database**.
+API RESTful desenvolvida com Spring Boot 3 e Java 21 para o gerenciamento de produtos, integrada ao banco de dados H2.
 
-O projeto adota o padrão arquitetural **DAO (Data Access Object)** para separar a lógica de negócio do acesso aos dados.
+🛠️ Tecnologias Utilizadas
 
-## 🚀 Funcionalidades
-O sistema opera através de um menu interativo no console, permitindo:
-1. **Cadastrar Produto:** Adiciona um novo item informando nome, preço e quantidade.
-2. **Listar Todos os Produtos:** Exibe todos os registros salvos no banco de dados.
-3. **Buscar Produto por ID:** Localiza um item específico através do seu identificador exclusivo.
-4. **Atualizar Produto:** Permite modificar as informações de um produto existente.
-5. **Excluir Produto:** Remove um item permanentemente do banco de dados.
+Java 21
+Spring Boot 3.2.5
+Spring Web (API REST)
+Spring Data JPA (Persistência de Dados)
+H2 Database (Banco de dados em memória)
+Maven (Gerenciamento de dependências)
 
-## 🛠️ Tecnologias e Estrutura do Ambiente
-* **Linguagem:** Java (Ambiente configurado com a JRE/JDK 25)
-* **Banco de Dados:** H2 Database
-* **Ambiente de Desenvolvimento (IDE):** Spring Tools Suite 4 (baseado em Eclipse)
-* **Interface:** Console de texto (`java.util.Scanner`)
+ 🚀 Funcionalidades da API
+A API disponibiliza endpoints para o ciclo completo de gerenciamento de produtos (CRUD):
+Método               Endpoint            Descrição
+GET                 /produtos            Lista todos os produtos
+GET                 /produtos/{id}       Busca um produto pelo ID
+POST                /produtos            Cadastra um novo produto
+PUT                 /produtos/{id}       Atualiza os dados de um produto
+DELETE              /produtos/{id}       Remove um produto pelo ID
 
-## 📁 Estrutura de Arquivos Principais
-* `Main.java`: Classe principal contendo o menu interativo e o ponto de entrada da aplicação (`main`).
-* `ConnectionFactory.java`: Responsável por estabelecer e gerenciar a conexão com o banco de dados H2.
-* `ProdutoDAO.java`: Classe que executa os comandos SQL (Insert, Select, Update, Delete) no banco.
-* `Produto.java`: Modelo/Entidade encapsulando os atributos do produto (ID, nome, preço, quantidade).
-* `GerenciadorProdutos.java`: Responsável por intermediar as regras de negócio entre o menu e o acesso ao banco.
+📝 Exemplos de Requisições
+1.Criar um Produto (POST /produtos)
+Corpo da Requisição (JSON):
+{
+  "nome": "Notebook Gamer",
+  "preco": 4500.00
+}
 
-## 📦 Como Executar o Projeto
+2.Atualizar um Produto (PUT /produtos/1)
+Corpo da Requisição (JSON):
+{
+  "nome": "Notebook Gamer Pro",
+  "preco": 4800.00
+}
 
-### Pré-requisitos
-* Possuir o **JDK 25** instalado no sistema operacional.
-* Possuir o driver `.jar` do banco de dados H2 adicionado ao Classpath do projeto (caso não use gerenciador de dependências).
+💻 Como Executar o Projeto
 
-### Execução pelo Spring Tools Suite (STS / Eclipse)
-1. Importe o projeto para dentro da sua Workspace (`File` -> `Import...` -> `Existing Projects into Workspace`).
-2. Localize o arquivo `Main.java` dentro do pacote `br.com.sistema.produto.app`.
-3. Clique com o botão direito sobre o arquivo `Main.java`.
-4. Escolha a opção **Run As** -> **Java Application**.
-5. Interaja com o sistema utilizando o painel **Console** da sua IDE.
+Clonar o repositório:
+git clone https://github.com/AndreLeitao906/sistema-produtos-java.git
+
+Entrar na pasta do projeto:
+cd sistema-produtos-spring
+
+Executar a aplicação:
+No Eclipse/Spring Tools Suite: clique com o botão direito na classe 
+
+SistemaProdutosSpringApplication.java -> Run As -> Spring Boot App.
+
+Pelo terminal:./mvnw spring-boot:run
+
+Acessar a API:Endereço base: http://localhost:8080/produtos
+
+Console do H2 (se habilitado): http://localhost:8080/h2-console
 
